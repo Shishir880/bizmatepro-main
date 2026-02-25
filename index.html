@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizMate Pro — Smart Solutions for Digital Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --g1: #16a34a;
+            --g2: #22c55e;
+            --dark: #ffffff;
+            --dark2: #f0fdf4;
+            --card: #ffffff;
+            --border: rgba(22,163,74,0.15);
+            --text: #0f1f14;
+            --muted: #6b7f6e;
+            --accent: #16a34a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Fraunces', serif;
+        }
+
+        /* NOISE TEXTURE OVERLAY */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.08;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #f0fdf4; }
+        ::-webkit-scrollbar-thumb { background: var(--g1); border-radius: 2px; }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 48px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.92);
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--g1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, var(--g1), var(--g2));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6b7f6e;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid #d1fae5;
+            color: var(--text);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--g1);
+            color: var(--g1);
+        }
+
+        .btn-primary {
+            background: var(--g1);
+            border: 1px solid var(--g1);
+            color: #000;
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background: var(--g2);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0,200,83,0.35);
+        }
+
+        .btn-lg {
+            padding: 14px 32px;
+            font-size: 15px;
+            border-radius: 10px;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 48px;
+            overflow: hidden;
+        }
+
+        .hero-bg-glow {
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(22,163,74,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(22,163,74,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22,163,74,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--g1);
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--g1);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero-title {
+            font-size: clamp(42px, 5vw, 68px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title .highlight {
+            color: var(--g1);
+            -webkit-text-stroke: 0px;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 56px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat-item .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .stat-item .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* HERO VISUAL */
+        .hero-visual {
+            position: relative;
+        }
+
+        .app-mockup {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(22,163,74,0.08);
+            animation: floatY 4s ease-in-out infinite;
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-14px) rotate(-1deg); }
+        }
+
+        .app-titlebar {
+            padding: 14px 18px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot-red { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+        .dot-yellow { width: 11px; height: 11px; border-radius: 50%; background: #ffbd2e; }
+        .dot-green { width: 11px; height: 11px; border-radius: 50%; background: #28c840; }
+
+        .app-title-text {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #94a3b8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .app-body {
+            padding: 24px;
+            background: #ffffff;
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .download-item:hover {
+            border-color: #bbf7d0;
+            background: #f0fdf4;
+        }
+
+        .dl-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .dl-info { flex: 1; min-width: 0; }
+        .dl-name { font-size: 13px; font-weight: 600; color: #0f1f14; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .dl-size { font-size: 11px; color: #6b7f6e; margin-top: 3px; }
+
+        .dl-progress-wrap { margin-top: 8px; }
+        .dl-bar { height: 3px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+        .dl-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--g1), var(--g2)); position: relative; }
+        .dl-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -1px;
+            width: 6px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--g2);
+        }
+
+        .dl-speed { font-size: 10px; color: var(--g1); margin-top: 5px; font-weight: 500; }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active { background: #dcfce7; color: #16a34a; }
+        .status-done { background: #f1f5f9; color: #94a3b8; }
+
+        .floating-tag {
+            position: absolute;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: floatTag 4s ease-in-out infinite;
+        }
+
+        .tag-1 { top: -20px; right: -20px; animation-delay: 1s; }
+        .tag-2 { bottom: 30px; left: -30px; animation-delay: 2s; }
+
+        @keyframes floatTag {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* SECTION COMMON */
+        section { position: relative; z-index: 1; }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--g1);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        /* TRUSTED LOGOS */
+        .trusted {
+            padding: 40px 48px;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .trusted-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            overflow: hidden;
+        }
+
+        .trusted-label {
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .logo-scroll {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            animation: scrollLogos 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes scrollLogos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .logo-item {
+            font-family: 'Fraunces', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: -0.5px;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 120px 48px;
+        }
+
+        .features-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            margin-bottom: 80px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 0% 0%, rgba(22,163,74,0.04), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #bbf7d0;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-icon-wrap {
+            width: 52px;
+            height: 52px;
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 22px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .feature-card-big {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%);
+            border-color: #bbf7d0;
+        }
+
+        /* PRODUCT SECTION */
+        .product {
+            padding: 120px 48px;
+            background: #f0fdf4;
+            border-top: 1px solid #d1fae5;
+            border-bottom: 1px solid #d1fae5;
+        }
+
+        .product-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .product-tag {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-tag-green { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+        .product-tag-gray { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+
+        .product-features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .product-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
+            color: var(--g1);
+            stroke: var(--g1);
+        }
+
+        .speed-meter {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .speed-label { font-size: 12px; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
+
+        .speed-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .speed-name { font-size: 13px; font-weight: 600; width: 90px; flex-shrink: 0; }
+
+        .speed-track { flex: 1; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+        .speed-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+        .speed-fill-green { background: linear-gradient(90deg, var(--g1), var(--g2)); }
+        .speed-fill-gray { background: #cbd5e1; }
+
+        .speed-val { font-size: 12px; color: var(--muted); width: 60px; text-align: right; font-weight: 500; }
+
+        .dl-stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .dl-stat {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .dl-stat .num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--g1); }
+        .dl-stat .lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+        /* HOW IT WORKS */
+        .how {
+            padding: 120px 48px;
+        }
+
+        .how-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .how-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+            pointer-events: none;
+        }
+
+        .step-item {
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .step-num-wrap {
+            width: 72px;
+            height: 72px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            position: relative;
+            font-family: 'Fraunces', serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--g1);
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .step-item:hover .step-num-wrap {
+            background: #dcfce7;
+            border-color: #bbf7d0;
+            box-shadow: 0 0 30px rgba(22,163,74,0.15);
+        }
+
+        .step-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.3px; }
+        .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 120px 48px;
+            background: #f0fdf4;
+            border-top: 1px solid #d1fae5;
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+
+        .testimonial-card:hover {
+            border-color: #bbf7d0;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 18px;
+        }
+
+        .star { color: #f59e0b; font-size: 14px; }
+
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #475569;
+            margin-bottom: 24px;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .reviewer-name { font-size: 14px; font-weight: 600; }
+        .reviewer-role { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+        /* PRICING */
+        .pricing {
+            padding: 120px 48px;
+        }
+
+        .pricing-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px 32px;
+            position: relative;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--g1);
+            background: linear-gradient(160deg, #f0fdf4, #ffffff);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--g1);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 16px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .plan-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .plan-price {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .plan-unit {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .plan-orig {
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: line-through;
+            margin-bottom: 24px;
+        }
+
+        .plan-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 28px 0;
+        }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--g1);
+            font-weight: 700;
+            font-size: 13px;
+            width: 18px;
+            flex-shrink: 0;
+        }
+
+        .plan-features li.na {
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .plan-features li.na::before { content: '—'; color: #cbd5e1; }
+
+        .btn-plan {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-plan-outline {
+            background: transparent;
+            border: 1px solid #e2e8f0;
+            color: #0f1f14;
+        }
+
+        .btn-plan-outline:hover { border-color: var(--g1); color: var(--g1); }
+
+        .btn-plan-green {
+            background: var(--g1);
+            color: #000;
+        }
+
+        .btn-plan-green:hover {
+            background: var(--g2);
+            box-shadow: 0 8px 24px rgba(0,200,83,0.4);
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 120px 48px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item.open { border-color: #bbf7d0; }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 24px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            gap: 16px;
+            background: #ffffff;
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+            line-height: 1;
+            color: var(--g1);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #ffffff;
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 22px;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.7;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 18px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 120px 48px;
+        }
+
+        .cta-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            background: #0f1f14;
+            border: 1px solid #16a34a;
+            border-radius: 32px;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-inner h2 { color: #ffffff; }
+        .cta-inner p { color: #6b8f6f; }
+
+        .cta-glow {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,200,83,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-inner h2 {
+            font-size: 50px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .cta-inner p {
+            font-size: 17px;
+            color: var(--muted);
+            margin-bottom: 48px;
+        }
+
+        .cta-actions { display: flex; justify-content: center; gap: 14px; }
+        .cta-actions .btn-ghost { border-color: rgba(255,255,255,0.2); color: #ffffff; }
+        .cta-actions .btn-ghost:hover { border-color: var(--g2); color: var(--g2); }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #e2e8f0;
+            padding: 60px 48px 40px;
+            background: #f8fafc;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 240px;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-bottom {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-bottom p { font-size: 13px; color: #94a3b8; }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            border-color: #bbf7d0;
+            color: var(--g1);
+        }
+
+        /* WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .wa-bubble {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 18px 20px;
+            max-width: 260px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            display: none;
+        }
+
+        .wa-bubble.visible { display: block; animation: slideUp 0.3s ease; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wa-bubble-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .wa-online-dot { width: 8px; height: 8px; background: var(--g1); border-radius: 50%; animation: pulse 2s infinite; }
+
+        .wa-online-text { font-size: 11px; color: var(--g1); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .wa-bubble p { font-size: 13px; color: #475569; line-height: 1.6; margin-bottom: 14px; }
+
+        .wa-bubble-btn {
+            display: block;
+            text-align: center;
+            background: var(--g1);
+            color: #000;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .wa-bubble-btn:hover { background: var(--g2); }
+
+        .wa-btn {
+            width: 58px;
+            height: 58px;
+            background: #25D366;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .wa-btn:hover { transform: scale(1.08); }
+
+        .wa-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+        .wa-notify {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            background: #ef4444;
+            border-radius: 50%;
+            border: 2px solid var(--dark);
+            animation: pulse 2s infinite;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content, .product-inner, .features-header, .footer-top {
+                grid-template-columns: 1fr;
+            }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .feature-card-big { grid-column: span 1; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+            .steps-grid::before { display: none; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            nav { padding: 0 24px; }
+            .hero { padding: 60px 24px; min-height: auto; }
+            .features, .product, .how, .testimonials, .pricing, .faq, .cta-section { padding: 80px 24px; }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .features-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+            .cta-inner { padding: 40px 24px; }
+            .cta-inner h2 { font-size: 32px; }
+            .hero-stats { gap: 24px; }
+            .dl-stats-row { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            footer { padding: 40px 24px 28px; }
+            .footer-top { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <div class="logo-icon">⚡</div>
+            BizMate Pro
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="#pricing" class="btn btn-ghost">Buy License</a>
+            <a href="#product" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download Free
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-glow"></div>
+        <div class="hero-grid-lines"></div>
+        <div class="hero-content">
+            <div>
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Now Available — v4.2 Released
+                </div>
+                <h1 class="hero-title">
+                    Power Tools for<br>
+                    <span class="highlight">Digital</span><br>
+                    Business Growth
+                </h1>
+                <p class="hero-desc">
+                    Premium desktop automation software and download management tools. Built for speed, security, and scale — everything your business needs in one place.
+                </p>
+                <div class="hero-actions">
+                    <a href="#product" class="btn btn-primary btn-lg">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        Start Free 7-Day Trial
+                    </a>
+                    <a href="#features" class="btn btn-ghost btn-lg">
+                        Explore Features →
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">10K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">10x</div>
+                        <div class="stat-label">Faster Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">4.9★</div>
+                        <div class="stat-label">User Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="app-mockup">
+                    <div class="app-titlebar">
+                        <div class="dot-red"></div>
+                        <div class="dot-yellow"></div>
+                        <div class="dot-green"></div>
+                        <span class="app-title-text">ProGet Download Manager v4.2</span>
+                    </div>
+                    <div class="app-body">
+                        <div class="download-item">
+                            <div class="dl-icon" style="background: rgba(0,200,83,0.1);">🎬</div>
+                            <div class="dl-info">
+                                <div class="dl-name">Tutorial_Series_HD.mp4</div>
+                                <div class="dl-size">1.2 GB · YouTube</div>
+                                <div class="dl-progress-wrap">
+                                    <div class="dl-bar"><div class="dl-bar-fill" style="width: 78%;"></div></div>
+                                    <div class="dl-speed">↓ 12.4 MB/s · 78%</div>
+                                </div>
+                            </div>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="download-item">
+                            <div class="dl-icon" style="background: rgba(59,130,246,0.1);">📦</div>
+                            <div class="dl-info">
+                                <div class="dl-name">Design_Assets_Pack_v3.zip</div>
+                                <div class="dl-size">450 MB · Direct</div>
+                                <div class="dl-progress-wrap">
+                                    <div class="dl-bar"><div class="dl-bar-fill" style="width: 100%;"></div></div>
+                                    <div class="dl-speed" style="color: var(--muted);">Complete</div>
+                                </div>
+                            </div>
+                            <span class="status-badge status-done">Done</span>
+                        </div>
+                        <div class="download-item">
+                            <div class="dl-icon" style="background: rgba(245,158,11,0.1);">🎵</div>
+                            <div class="dl-info">
+                                <div class="dl-name">Podcast_Batch_x32.mp3</div>
+                                <div class="dl-size">180 MB · Batch (32 files)</div>
+                                <div class="dl-progress-wrap">
+                                    <div class="dl-bar"><div class="dl-bar-fill" style="width: 41%;"></div></div>
+                                    <div class="dl-speed">↓ 8.1 MB/s · 41%</div>
+                                </div>
+                            </div>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-tag tag-1" style="animation: floatTag 3s ease-in-out infinite;">
+                    <span style="font-size:20px">🔐</span>
+                    <div>
+                        <div style="font-size:12px;font-weight:700;color:#0f1f14">Military-Grade</div>
+                        <div style="font-size:10px;color:#6b7f6e">AES-256 Encrypted</div>
+                    </div>
+                </div>
+                <div class="floating-tag tag-2" style="animation: floatTag 3.5s ease-in-out infinite 0.5s;">
+                    <span style="font-size:20px">⚡</span>
+                    <div>
+                        <div style="font-size:12px;font-weight:700;color:var(--g1)">10x Faster</div>
+                        <div style="font-size:10px;color:#6b7f6e">Multi-thread engine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED BRANDS -->
+    <div class="trusted">
+        <div class="trusted-inner">
+            <span class="trusted-label">Trusted by</span>
+            <div style="flex:1;overflow:hidden;mask:linear-gradient(90deg, transparent, black 10%, black 90%, transparent);">
+                <div class="logo-scroll">
+                    <span class="logo-item">TechStartup BD</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">DigitalAgency Pro</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">FreelancerHub</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">MediaWorks</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">ShopOnline BD</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">ContentFactory</span>
+                    <span class="logo-item">·</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="logo-item">TechStartup BD</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">DigitalAgency Pro</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">FreelancerHub</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">MediaWorks</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">ShopOnline BD</span>
+                    <span class="logo-item">·</span>
+                    <span class="logo-item">ContentFactory</span>
+                    <span class="logo-item">·</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section id="features" class="features">
+        <div class="features-inner">
+            <div class="features-header">
+                <div>
+                    <div class="section-label">Why BizMate Pro</div>
+                    <h2 class="section-title">Everything you need to move faster</h2>
+                </div>
+                <p class="section-desc">From blazing-fast downloads to full business automation — BizMate Pro is the all-in-one toolkit for modern digital businesses.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card feature-card-big">
+                    <div class="feature-icon-wrap">⚡</div>
+                    <h3>Multi-Threaded Download Engine</h3>
+                    <p>Our proprietary engine splits files into parallel streams and downloads simultaneously, achieving speeds up to 10x faster than standard browsers. Works with any URL or direct download link.</p>
+                    <div style="margin-top:24px;display:flex;gap:24px;">
+                        <div>
+                            <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:800;color:var(--g1);">10x</div>
+                            <div style="font-size:12px;color:#6b7f6e;margin-top:2px;">Faster Downloads</div>
+                        </div>
+                        <div>
+                            <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:800;color:#0f1f14">32</div>
+                            <div style="font-size:12px;color:#6b7f6e;margin-top:2px;">Parallel Threads</div>
+                        </div>
+                        <div>
+                            <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:800;color:#0f1f14">100%</div>
+                            <div style="font-size:12px;color:#6b7f6e;margin-top:2px;">Resume Support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">🤖</div>
+                    <h3>Business Automation</h3>
+                    <p>Automate repetitive daily tasks with our powerful rule-based automation engine. Save hours every week.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">🎬</div>
+                    <h3>Video Downloader</h3>
+                    <p>Save HD videos from YouTube, Facebook, TikTok, Instagram and 200+ platforms in one click.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">🔒</div>
+                    <h3>Military-Grade Security</h3>
+                    <p>AES-256 encryption ensures all your downloads and data are completely private and secure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">📦</div>
+                    <h3>Batch Downloading</h3>
+                    <p>Add hundreds of links at once and let BizMate Pro download them automatically in the background.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">🔄</div>
+                    <h3>Auto-Scheduler</h3>
+                    <p>Schedule downloads for off-peak hours to maximize bandwidth. Set and forget with smart queuing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SECTION -->
+    <section id="product" class="product">
+        <div class="product-inner">
+            <div>
+                <div class="product-tags">
+                    <span class="product-tag product-tag-green">⭐ Premium Tool</span>
+                    <span class="product-tag product-tag-gray">Windows 10/11</span>
+                    <span class="product-tag product-tag-gray">v4.2 Latest</span>
+                </div>
+                <div class="section-label">ProGet Download Manager</div>
+                <h2 class="section-title" style="margin-bottom:20px;">Download anything.<br>At full speed.</h2>
+                <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:32px;">ProGet is a professional download manager that turbocharges your downloads. It integrates directly with your browser and supports every major platform.</p>
+                <ul class="product-features-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        10x faster downloads with multi-thread engine
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        One-click batch downloading for 1000+ files
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        Download videos from 200+ platforms
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        Browser extension for Chrome & Firefox
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        Resume interrupted downloads automatically
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        Built-in virus scanner for all downloads
+                    </li>
+                </ul>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                    <a href="#" class="btn btn-primary btn-lg">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        Download Free Trial
+                    </a>
+                    <a href="#pricing" class="btn btn-ghost btn-lg">Buy License 🔑</a>
+                </div>
+            </div>
+            <div>
+                <div class="speed-meter">
+                    <div class="speed-label">DOWNLOAD SPEED COMPARISON</div>
+                    <div class="speed-row">
+                        <span class="speed-name">BizMate Pro</span>
+                        <div class="speed-track"><div class="speed-fill speed-fill-green" style="width:92%"></div></div>
+                        <span class="speed-val" style="color:var(--g1);">94 MB/s</span>
+                    </div>
+                    <div class="speed-row">
+                        <span class="speed-name">Chrome</span>
+                        <div class="speed-track"><div class="speed-fill speed-fill-gray" style="width:22%"></div></div>
+                        <span class="speed-val">9.5 MB/s</span>
+                    </div>
+                    <div class="speed-row">
+                        <span class="speed-name">Edge</span>
+                        <div class="speed-track"><div class="speed-fill speed-fill-gray" style="width:19%"></div></div>
+                        <span class="speed-val">8.2 MB/s</span>
+                    </div>
+                    <div class="speed-row" style="margin-bottom:0">
+                        <span class="speed-name">Firefox</span>
+                        <div class="speed-track"><div class="speed-fill speed-fill-gray" style="width:16%"></div></div>
+                        <span class="speed-val">7.1 MB/s</span>
+                    </div>
+                </div>
+                <div class="dl-stats-row">
+                    <div class="dl-stat">
+                        <div class="num">10K+</div>
+                        <div class="lbl">Downloads</div>
+                    </div>
+                    <div class="dl-stat">
+                        <div class="num">200+</div>
+                        <div class="lbl">Platforms</div>
+                    </div>
+                    <div class="dl-stat">
+                        <div class="num">4.9★</div>
+                        <div class="lbl">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how">
+        <div class="how-inner">
+            <div class="how-header">
+                <div class="section-label">Get Started in Minutes</div>
+                <h2 class="section-title" style="margin-bottom:16px;">Simple 4-step setup</h2>
+                <p style="font-size:16px;color:var(--muted);">From download to full speed in under 3 minutes. No technical knowledge required.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-num-wrap">01</div>
+                    <h3 class="step-title">Download App</h3>
+                    <p class="step-desc">Click the download button and save the lightweight 8MB installer to your PC.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num-wrap">02</div>
+                    <h3 class="step-title">Install & Launch</h3>
+                    <p class="step-desc">Run the installer and BizMate Pro will be ready in under 60 seconds.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num-wrap">03</div>
+                    <h3 class="step-title">Start Trial</h3>
+                    <p class="step-desc">Enjoy all premium features completely free for 7 days. No credit card needed.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num-wrap">04</div>
+                    <h3 class="step-title">Activate License</h3>
+                    <p class="step-desc">After trial, purchase a lifetime key for just 299 Taka and unlock everything forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonials-inner">
+            <div class="testimonials-header">
+                <div class="section-label">User Reviews</div>
+                <h2 class="section-title" style="margin-bottom:16px;">Loved by thousands</h2>
+                <p style="font-size:16px;color:var(--muted);">Don't just take our word for it. Here's what our users say.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"I've been using BizMate Pro for 6 months. My download speeds literally jumped from 3 MB/s to 30 MB/s. The batch downloader alone saves me 2 hours every day. Best 299 Taka I ever spent."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar" style="background:rgba(0,200,83,0.15);color:var(--g1);">RA</div>
+                        <div>
+                            <div class="reviewer-name">Rakib Ahmed</div>
+                            <div class="reviewer-role">Content Creator, Dhaka</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"The automation features are game-changing. I set up workflows once and they run automatically. My business productivity has increased by at least 40% since I started using this."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar" style="background:rgba(59,130,246,0.15);color:#60a5fa;">FH</div>
+                        <div>
+                            <div class="reviewer-name">Farhan Hossain</div>
+                            <div class="reviewer-role">Digital Agency Owner</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"Super clean UI, blazing fast, and the support team on WhatsApp responds within minutes. The video downloader works perfectly with YouTube and Facebook. Highly recommend!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar" style="background:rgba(245,158,11,0.15);color:#f59e0b;">NK</div>
+                        <div>
+                            <div class="reviewer-name">Nadia Khan</div>
+                            <div class="reviewer-role">Freelancer & Marketer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing">
+        <div class="pricing-inner">
+            <div class="pricing-header">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title" style="margin-bottom:16px;">Simple, transparent pricing</h2>
+                <p style="font-size:16px;color:var(--muted);margin:0 auto;max-width:420px;">Start free. Upgrade when you're ready. One-time payment, lifetime access.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Free Trial</div>
+                    <div class="plan-price">0<span class="plan-unit"> Taka</span></div>
+                    <div class="plan-orig">7 days only</div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li>All features unlocked</li>
+                        <li>7-day trial period</li>
+                        <li>Standard support</li>
+                        <li class="na">Lifetime access</li>
+                        <li class="na">Priority support</li>
+                    </ul>
+                    <a href="#product" class="btn-plan btn-plan-outline">Download Free</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-name">Lifetime Pro</div>
+                    <div class="plan-price">299<span class="plan-unit"> ৳</span></div>
+                    <div class="plan-orig">Was 1000 Taka — Save 70%</div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li>All premium features</li>
+                        <li>Lifetime license key</li>
+                        <li>All future updates free</li>
+                        <li>Priority WhatsApp support</li>
+                        <li>1 PC activation</li>
+                    </ul>
+                    <a href="https://wa.me/yournumber?text=I%20want%20to%20buy%20the%20Pro%20Key%20for%20299%20Taka" class="btn-plan btn-plan-green">Buy License Key 🔑</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="plan-name">Business</div>
+                    <div class="plan-price">799<span class="plan-unit"> ৳</span></div>
+                    <div class="plan-orig">Per 5 PCs — One-time</div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li>All Pro features</li>
+                        <li>5 PC activations</li>
+                        <li>Team dashboard</li>
+                        <li>Dedicated support</li>
+                        <li>Custom automation</li>
+                    </ul>
+                    <a href="https://wa.me/yournumber?text=I%20want%20the%20Business%20Plan%20for%205%20PCs" class="btn-plan btn-plan-outline">Contact for Business</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <div class="section-label">FAQ</div>
+                <h2 class="section-title" style="margin-bottom:16px;">Common questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I receive my license key after payment?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">After payment via bKash, Nagad, or Rocket, message us on WhatsApp with your payment screenshot. We'll send your license key instantly, usually within 5 minutes. 24/7 support available.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is BizMate Pro safe? Will my antivirus flag it?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">BizMate Pro is completely safe. It's digitally signed and verified. Some antivirus programs may show a false positive for automation software — if this happens, simply add it to your whitelist. We include an official safety certificate with every download.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What Windows versions are supported?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">BizMate Pro supports Windows 10 (64-bit) and Windows 11. We do not currently support Windows 7/8 or macOS. A minimum of 4GB RAM and 100MB free disk space is recommended.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I use the license on multiple computers?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">The standard Pro license (299 Taka) allows activation on 1 PC. If you need multiple PCs, check our Business plan (799 Taka for 5 PCs) or contact us on WhatsApp to discuss custom options.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Do I get free updates after purchase?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! Your lifetime key includes all future updates to v4.x for free. Major version upgrades (v5.0+) may require a discounted upgrade, which we offer at a significant discount to existing customers.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <div class="cta-glow"></div>
+            <div class="hero-badge" style="margin:0 auto 28px;">
+                <span class="dot"></span>
+                Limited Time — 70% Off
+            </div>
+            <h2>Ready to grow<br><span style="color:var(--g1)">10x faster?</span></h2>
+            <p>Join 10,000+ businesses already using BizMate Pro to automate their workflow and accelerate their downloads.</p>
+            <div class="cta-actions">
+                <a href="#product" class="btn btn-ghost btn-lg">Download Free Trial</a>
+                <a href="https://wa.me/yournumber?text=I%20want%20to%20buy%20the%20Pro%20Key" class="btn btn-primary btn-lg">
+                    Buy License — 299৳ Only
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo" style="font-size:22px;">
+                        <div class="logo-icon">⚡</div>
+                        BizMate Pro
+                    </a>
+                    <p>Smart desktop tools and automation software to power your digital business. Built for speed, built to last.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#product">Download Manager</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://wa.me/yournumber">WhatsApp Support</a></li>
+                        <li><a href="#">User Guide</a></li>
+                        <li><a href="#">Report a Bug</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">License Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 BizMate Pro. All rights reserved. Made in Bangladesh 🇧🇩</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Facebook">f</a>
+                    <a href="#" class="social-link" title="YouTube">▶</a>
+                    <a href="https://wa.me/yournumber" class="social-link" title="WhatsApp" style="color:var(--g1);border-color:rgba(0,200,83,0.3);">✆</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <div class="wa-float">
+        <div class="wa-bubble" id="waBubble">
+            <div class="wa-bubble-header">
+                <div class="wa-online-dot"></div>
+                <span class="wa-online-text">Support Online</span>
+            </div>
+            <p>👋 Hi! Want to buy a <strong>License Key</strong> or need help? Chat with us on WhatsApp!</p>
+            <a href="https://wa.me/yournumber" class="wa-bubble-btn">Start Chat Now →</a>
+        </div>
+        <button class="wa-btn" onclick="toggleWa()" aria-label="WhatsApp Support">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.033 1.389 4.625 1.39 5.4 0 9.793-4.393 9.795-9.793.001-2.618-1.02-5.08-2.876-6.937-1.856-1.855-4.318-2.873-6.934-2.874-5.399 0-9.791 4.392-9.794 9.792-.001 1.709.469 3.376 1.36 4.847l-.992 3.619 3.816-.944zm11.232-7.618c-.301-.15-1.778-.877-2.054-.977-.276-.1-.476-.15-.676.15-.2.3-.776.977-.951 1.176-.175.2-.351.225-.651.075-.3-.15-1.266-.467-2.411-1.487-.891-.794-1.492-1.775-1.667-2.075-.175-.3-.019-.462.13-.611.134-.134.3-.349.45-.524.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.626-.926-2.226-.243-.585-.49-.505-.676-.515-.175-.008-.375-.01-.575-.01s-.525.075-.8.375c-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.115 3.23 5.125 4.527.716.309 1.275.494 1.71.632.719.228 1.375.196 1.891.119.576-.086 1.778-.726 2.029-1.426.25-.7.25-1.3.175-1.425-.075-.125-.275-.2-.575-.35z"/></svg>
+            <div class="wa-notify"></div>
+        </button>
+    </div>
+
+    <script>
+        // FAQ toggle
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            document.querySelectorAll('.faq-item.open').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-answer').style.maxHeight = '0';
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+            }
+        }
+
+        // WhatsApp toggle
+        function toggleWa() {
+            document.getElementById('waBubble').classList.toggle('visible');
+        }
+
+        // Auto-show after 4s
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('waBubble').classList.add('visible');
+            }, 4000);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Animate speed bars on scroll
+        const speedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.speed-fill').forEach(bar => {
+                        const w = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => bar.style.width = w, 100);
+                    });
+                    speedObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.speed-meter').forEach(el => speedObserver.observe(el));
+    </script>
+</body>
+</html>
